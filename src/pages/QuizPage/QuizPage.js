@@ -1,35 +1,33 @@
 import React from 'react';
-import {
-  Link,
-  useParams,
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import './QuizPage.css';
 
-function QuizPage({ lastStep }) {
-  const { stepId } = useParams();
-  const nextStep = parseInt(stepId, 10) + 1;
+function QuizPage({ questions, totalQuestions, handleOnAnswer }) {
+  const { questionId } = useParams();
+  const currentQuestion = parseInt(questionId, 10);
+  const nextQuestion = currentQuestion + 1;
+  const question = questions[currentQuestion - 1];
+
+  console.log(question)
 
   return (
     <div className="QuizPage">
       <header className="QuizPage-header">
         <h1>
-          Welcome to the Quiz!
+          {question.category}
         </h1>
-        { nextStep === lastStep ? (
-          <Link
-            className="HomePage-link"
-            to="/quiz/results"
-          >
-            Finish
-          </Link>
-        ) : (
-          <Link
-            className="HomePage-link"
-            to={`/quiz/step/${nextStep}`}
-          >
-            Next
-          </Link>
-        )}
+        <h3>
+          {question.question}
+        </h3>
+        <div onClick={() => handleOnAnswer('True' === question.correct_answer, nextQuestion)}>
+          True
+        </div>
+        <div onClick={() => handleOnAnswer('False' === question.correct_answer, nextQuestion)}>
+          False
+        </div>
+        <h4>
+          Question {currentQuestion} / {totalQuestions}
+        </h4>
       </header>
     </div>
   );
