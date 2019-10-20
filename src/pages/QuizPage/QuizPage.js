@@ -13,21 +13,25 @@ function QuizPage({ questions, totalQuestions, handleOnAnswer }) {
   return (
     <div className="QuizPage">
       <header className="QuizPage-header">
-        <h1>
-          {question.category}
-        </h1>
-        <h3>
-          {question.question}
-        </h3>
-        <div onClick={() => handleOnAnswer('True' === question.correct_answer, nextQuestion)}>
-          True
+        <div className="QuizPage-question-section">
+          <h1>{question.category}</h1>
+          <h3>{question.question}</h3>
         </div>
-        <div onClick={() => handleOnAnswer('False' === question.correct_answer, nextQuestion)}>
-          False
+        <div className="QuizPage-button-answers-section">
+          <div
+            className="QuizPage-button-answer true"
+            onClick={() => handleOnAnswer('True' === question.correct_answer, nextQuestion)}
+          >
+            True
+          </div>
+          <div
+            className="QuizPage-button-answer false"
+            onClick={() => handleOnAnswer('False' === question.correct_answer, nextQuestion)}
+          >
+            False
+          </div>
         </div>
-        <h4>
-          Question {currentQuestion} / {totalQuestions}
-        </h4>
+        <h4>Question {currentQuestion} / {totalQuestions}</h4>
       </header>
     </div>
   );

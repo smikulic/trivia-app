@@ -18,5 +18,23 @@
 }
 
 .ResultsPage-link {
-  color: #09d3ac;
+  color: rgb(84, 214, 175);
+}
+
+.ResultsPage-questions-section {
+  padding: 1rem 4rem;
+  text-align: left;
+}
+
+.ResultsPage-question {
+  margin: 1rem 0;
+  font-size: 1.25rem;
+}
+
+.ResultsPage-question.correct {
+  color: green;
+}
+
+.ResultsPage-question.incorrect {
+  color: red;
 }

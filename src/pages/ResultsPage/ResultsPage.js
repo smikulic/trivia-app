@@ -20,12 +20,22 @@ function ResultsPage({ questions, totalQuestions, answers }) {
         <h1>
           You score {correctAnswers.length} / {totalQuestions}
         </h1>
-        { questions && questions.map((question, key) => {
-          return <div key={key}>{question.question} / {answers[key].toString()}</div>
-        })}
+        <div className="ResultsPage-questions-section">
+          { questions && questions.map((question, key) => {
+            const correctlyAnsweredQuestion = answers[key];
+            return (
+              <div
+                className={`ResultsPage-question ${correctlyAnsweredQuestion ? 'correct' : 'incorrect'}`}
+                key={key}
+              >
+                {question.question}
+              </div>
+            );
+          })}
+        </div>
         <Link
           className="ResultsPage-link"
-          to="/quiz/step/1"
+          to="/"
         >
           Try again
         </Link>

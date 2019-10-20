@@ -18,5 +18,50 @@
 }
 
 .QuizPage-link {
-  color: #09d3ac;
+  color: rgb(84, 214, 175);
+}
+
+.QuizPage-question-section {
+  padding: 1rem 4rem;
+  height: 20rem;
+}
+
+.QuizPage-button-answer {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.QuizPage-button-answers-section {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1.5rem 0;
+  width: 24rem;
+}
+
+.QuizPage-button-answer {
+  width: 6rem;
+  cursor: pointer;
+  margin: 1px;
+}
+
+.QuizPage-button-answer.true {
+  color: rgb(26, 192, 142);
+  border: 1px solid rgb(26, 192, 142);
+}
+
+.QuizPage-button-answer.true:hover {
+  margin: 0;
+  color: rgb(84, 214, 175);
+  border: 2px solid rgba(84, 214, 175);
+}
+
+.QuizPage-button-answer.false {
+  color: rgb(207, 72, 45);
+  border: 1px solid rgb(207, 72, 45);
+}
+
+.QuizPage-button-answer.false:hover {
+  margin: 0;
+  color: rgba(237, 68, 34);
+  border: 2px solid rgba(237, 68, 34);
 }
