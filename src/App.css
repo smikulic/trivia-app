@@ -16,4 +16,6 @@
 .app-link {
   margin-bottom: 2rem;
   color: rgb(84, 214, 175);
+  text-decoration: underline;
+  cursor: pointer;
 }

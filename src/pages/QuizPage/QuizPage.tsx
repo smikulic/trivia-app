@@ -2,11 +2,19 @@ import React from 'react';
 import { useParams } from "react-router-dom";
 import ButtonAnswer from '../../components/ButtonAnswer';
 import StatusText from '../../components/StatusText';
+import { IQuestion } from '../../types';
 import './QuizPage.css';
 
-function QuizPage({ questions, totalQuestions, handleOnAnswer }) {
+interface IQuizPageProps {
+  questionId: string,
+  questions: IQuestion[],
+  totalQuestions: number,
+  handleOnAnswer: (arg1: boolean, arg2: number) => void,
+}
+
+function QuizPage({ questions, totalQuestions, handleOnAnswer }: IQuizPageProps) {
   const { questionId } = useParams();
-  const currentQuestion = parseInt(questionId, 10);
+  const currentQuestion = questionId ? parseInt(questionId, 10) : 0;
   const nextQuestion = currentQuestion + 1;
   const question = questions[currentQuestion - 1];
 

@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
 import StatusText from '../../components/StatusText';
 import { FaCheck, FaMinus } from 'react-icons/fa';
+import { IQuestion } from '../../types';
 import './ResultsPage.css';
 
-function ResultsPage({ questions, totalQuestions, answers }) {
+interface IResultsPageProps {
+  questions: IQuestion[],
+  totalQuestions: number,
+  answers: any, // this needs to be boolean[] but there is an issues with TS and initial never[] state.
+  handleOnRestart: () => void,
+}
+
+function ResultsPage({ questions, totalQuestions, answers, handleOnRestart }: IResultsPageProps) {
   const [correctAnswers, setCorrectAnswers] = useState([]);
 
   // As soon as this component renders calculate and set the score
   useEffect(() => {
-    const correctAnswers = answers.filter(answer => answer === true);
+    const correctAnswers = answers.filter((answer: boolean) => answer === true);
     setCorrectAnswers(correctAnswers)
   }, [])
 
@@ -35,12 +42,12 @@ function ResultsPage({ questions, totalQuestions, answers }) {
           );
         })}
       </div>
-      <Link
+      <div
         className="app-link"
-        to="/"
+        onClick={() => handleOnRestart()}
       >
         Try again
-      </Link>
+      </div>
     </React.Fragment>
   );
 }

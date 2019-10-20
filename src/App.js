@@ -43,6 +43,10 @@ function App() {
       history.push(`/quiz/question/${nextQuestion}`)
     }
   }
+  
+  const handleOnRestart = () => {
+    history.push('/');
+  }
 
   return (
     <div className="app">
@@ -52,7 +56,7 @@ function App() {
             <QuizPage questions={questions} totalQuestions={TOTAL_QUESTIONS} handleOnAnswer={handleOnAnswer} />
           </Route>
           <Route path="/quiz/results">
-            <ResultsPage questions={questions} totalQuestions={TOTAL_QUESTIONS} answers={answers} />
+            <ResultsPage questions={questions} totalQuestions={TOTAL_QUESTIONS} answers={answers} handleOnRestart={handleOnRestart} />
           </Route>
           <Route path="/">
             <HomePage handleOnStart={handleOnStart} loading={loading} />

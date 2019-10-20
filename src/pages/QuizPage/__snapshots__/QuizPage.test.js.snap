@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <div
+    className="QuizPage-question-section"
+  >
+    <h1>
+      category1
+    </h1>
+    <h3>
+      question1?
+    </h3>
+  </div>,
+  <div
+    className="QuizPage-button-answers-section"
+  >
+    <div
+      className="button-answer true"
+      onClick={[Function]}
+    >
+      true
+    </div>
+    <div
+      className="button-answer false"
+      onClick={[Function]}
+    >
+      false
+    </div>
+  </div>,
+  <h3>
+    Question
+     
+    1
+     / 
+    10
+  </h3>,
+]
+`;
