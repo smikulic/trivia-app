@@ -8,6 +8,7 @@ import './App.css';
 import HomePage from './pages/HomePage/HomePage';
 import QuizPage from './pages/QuizPage/QuizPage';
 import ResultsPage from './pages/ResultsPage/ResultsPage';
+import { getQuestionsData } from './utils/api';
 
 const TOTAL_QUESTIONS = 10
 
@@ -20,13 +21,14 @@ function App() {
   const handleOnStart = () => {
     setLoading(true);
 
-    fetch(`https://opentdb.com/api.php?amount=${TOTAL_QUESTIONS}&difficulty=hard&type=boolean`)
-      .then((res) => res.json())
-      .then((data) => {
-        setQuestions(data.results)
+    getQuestionsData({
+      amount: TOTAL_QUESTIONS,
+      onSuccess: (data) => {
+        setQuestions(data)
         setLoading(false)
-      })
-      .then(() => history.push("/quiz/question/1"))
+        history.push('/quiz/question/1')
+      },
+    })
   }
   
   const handleOnAnswer = (answer, nextQuestion) => {
@@ -43,17 +45,21 @@ function App() {
   }
 
   return (
-    <Switch>
-      <Route path="/quiz/question/:questionId">
-        <QuizPage questions={questions} totalQuestions={TOTAL_QUESTIONS} handleOnAnswer={handleOnAnswer} />
-      </Route>
-      <Route path="/quiz/results">
-        <ResultsPage questions={questions} totalQuestions={TOTAL_QUESTIONS} answers={answers} />
-      </Route>
-      <Route path="/">
-        <HomePage handleOnStart={handleOnStart} loading={loading} />
-      </Route>
-    </Switch>
+    <div className="app">
+      <div className="app-wrapper">
+        <Switch>
+          <Route path="/quiz/question/:questionId">
+            <QuizPage questions={questions} totalQuestions={TOTAL_QUESTIONS} handleOnAnswer={handleOnAnswer} />
+          </Route>
+          <Route path="/quiz/results">
+            <ResultsPage questions={questions} totalQuestions={TOTAL_QUESTIONS} answers={answers} />
+          </Route>
+          <Route path="/">
+            <HomePage handleOnStart={handleOnStart} loading={loading} />
+          </Route>
+        </Switch>
+      </div>
+    </div>
   );
 }
 

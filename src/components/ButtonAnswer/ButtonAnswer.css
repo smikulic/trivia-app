@@ -1,0 +1,30 @@
+.button-answer {
+  margin: 1px;
+  padding: 1rem;
+  width: 6rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.button-answer.true {
+  color: rgb(26, 192, 142);
+  border: 1px solid rgb(26, 192, 142);
+}
+
+.button-answer.true:hover {
+  margin: 0;
+  color: rgb(84, 214, 175);
+  border: 2px solid rgba(84, 214, 175);
+}
+
+.button-answer.false {
+  color: rgb(207, 72, 45);
+  border: 1px solid rgb(207, 72, 45);
+}
+
+.button-answer.false:hover {
+  margin: 0;
+  color: rgba(237, 68, 34);
+  border: 2px solid rgba(237, 68, 34);
+}

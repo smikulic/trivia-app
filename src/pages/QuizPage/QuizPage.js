@@ -1,5 +1,7 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
+import ButtonAnswer from '../../components/ButtonAnswer';
+import StatusText from '../../components/StatusText';
 import './QuizPage.css';
 
 function QuizPage({ questions, totalQuestions, handleOnAnswer }) {
@@ -8,32 +10,28 @@ function QuizPage({ questions, totalQuestions, handleOnAnswer }) {
   const nextQuestion = currentQuestion + 1;
   const question = questions[currentQuestion - 1];
 
-  console.log(question)
-
   return (
-    <div className="QuizPage">
-      <header className="QuizPage-header">
-        <div className="QuizPage-question-section">
-          <h1>{question.category}</h1>
-          <h3>{question.question}</h3>
-        </div>
-        <div className="QuizPage-button-answers-section">
-          <div
-            className="QuizPage-button-answer true"
-            onClick={() => handleOnAnswer('True' === question.correct_answer, nextQuestion)}
-          >
-            True
-          </div>
-          <div
-            className="QuizPage-button-answer false"
-            onClick={() => handleOnAnswer('False' === question.correct_answer, nextQuestion)}
-          >
-            False
-          </div>
-        </div>
-        <h4>Question {currentQuestion} / {totalQuestions}</h4>
-      </header>
-    </div>
+    <React.Fragment>
+      <div className="QuizPage-question-section">
+        <h1>{question.category || 'N/A'}</h1>
+        <h3>{question.question}</h3>
+      </div>
+      <div className="QuizPage-button-answers-section">
+        <ButtonAnswer
+          answerValue="true"
+          handleOnClick={() => handleOnAnswer('True' === question.correct_answer, nextQuestion)}
+        />
+        <ButtonAnswer
+          answerValue="false"
+          handleOnClick={() => handleOnAnswer('False' === question.correct_answer, nextQuestion)}
+        />
+      </div>
+      <StatusText
+        statusNotice="Question"
+        firstValue={currentQuestion}
+        secondValue={totalQuestions}
+      />
+    </React.Fragment>
   );
 }
 

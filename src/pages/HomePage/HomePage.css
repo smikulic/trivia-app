@@ -1,23 +1,5 @@
-.HomePage {
-  text-align: center;
-}
-
-.HomePage-logo {
-  height: 40vmin;
-}
-
-.HomePage-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.HomePage-link {
+.start-link {
+  margin-bottom: 2rem;
   color: rgb(84, 214, 175);
   text-decoration: underline;
   cursor: pointer;
