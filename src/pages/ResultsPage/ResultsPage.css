@@ -5,7 +5,7 @@
 
 .ResultsPage-question {
   margin: 1rem 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -16,4 +16,10 @@
 
 .ResultsPage-question.incorrect {
   color: rgb(207, 72, 45);
+}
+
+.ResultsPage-question svg {
+  margin-right: 1rem;
+  position: relative;
+  top: 0.15rem;
 }

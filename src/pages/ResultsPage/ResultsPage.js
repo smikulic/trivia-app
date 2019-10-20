@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import StatusText from '../../components/StatusText';
+import { FaCheck, FaMinus } from 'react-icons/fa';
 import './ResultsPage.css';
 
 function ResultsPage({ questions, totalQuestions, answers }) {
@@ -27,6 +28,8 @@ function ResultsPage({ questions, totalQuestions, answers }) {
               className={`ResultsPage-question ${correctlyAnsweredQuestion ? 'correct' : 'incorrect'}`}
               key={key}
             >
+              {correctlyAnsweredQuestion ? <FaCheck /> : <FaMinus />}
+              {' '}
               {question.question}
             </div>
           );
