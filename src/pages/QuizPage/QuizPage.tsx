@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ButtonAnswer from '../../components/ButtonAnswer';
 import StatusText from '../../components/StatusText';
 import { IQuestion } from '../../types';
+import { decodeHtml } from '../../utils/formatter';
 import './QuizPage.css';
 
 interface IQuizPageProps {
@@ -22,7 +23,7 @@ function QuizPage({ questions, totalQuestions, handleOnAnswer }: IQuizPageProps)
     <React.Fragment>
       <div className="QuizPage-question-section">
         <h1>{question.category || 'N/A'}</h1>
-        <h3>{question.question}</h3>
+        <h3>{decodeHtml(question.question)}</h3>
       </div>
       <div className="QuizPage-button-answers-section">
         <ButtonAnswer

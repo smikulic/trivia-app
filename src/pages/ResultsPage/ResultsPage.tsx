@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StatusText from '../../components/StatusText';
 import { FaCheck, FaMinus } from 'react-icons/fa';
 import { IQuestion } from '../../types';
+import { decodeHtml } from '../../utils/formatter';
 import './ResultsPage.css';
 
 interface IResultsPageProps {
@@ -37,7 +38,7 @@ function ResultsPage({ questions, totalQuestions, answers, handleOnRestart }: IR
             >
               {correctlyAnsweredQuestion ? <FaCheck /> : <FaMinus />}
               {' '}
-              {question.question}
+              {decodeHtml(question.question)}
             </div>
           );
         })}
