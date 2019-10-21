@@ -15,6 +15,7 @@ const TOTAL_QUESTIONS = 10
 function App() {
   let history = useHistory();
   const [loading, setLoading] = useState(false);
+  const [answered, setAnswered] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
 
@@ -33,18 +34,26 @@ function App() {
   
   const handleOnAnswer = (answer, nextQuestion) => {
     let clonedAnswers = [...answers];
+    const isFinalQuestion = nextQuestion > TOTAL_QUESTIONS;
+    
     clonedAnswers.push(answer);
     
     setAnswers(clonedAnswers)
 
-    if (nextQuestion > TOTAL_QUESTIONS) {
-      history.push('/quiz/results')
-    } else {
-      history.push(`/quiz/question/${nextQuestion}`)
-    }
+    history.push(isFinalQuestion ? '/quiz/results' : `/quiz/question/${nextQuestion}`);
+  }
+  
+  const handleJumpToQuestion = (question) => {
+    const isQuestionAnswered = question <= answers.length;
+
+    setAnswered(isQuestionAnswered)
+
+    history.push(`/quiz/question/${question}`);
   }
   
   const handleOnRestart = () => {
+    setAnswers([])
+    setAnswered(false)
     history.push('/');
   }
 
@@ -53,10 +62,22 @@ function App() {
       <div className="app-wrapper">
         <Switch>
           <Route path="/quiz/question/:questionId">
-            <QuizPage questions={questions} totalQuestions={TOTAL_QUESTIONS} handleOnAnswer={handleOnAnswer} />
+            <QuizPage
+              questions={questions}
+              totalQuestions={TOTAL_QUESTIONS}
+              handleOnAnswer={handleOnAnswer}
+              handleJumpToQuestion={handleJumpToQuestion}
+              answered={answered}
+              answers={answers}
+            />
           </Route>
           <Route path="/quiz/results">
-            <ResultsPage questions={questions} totalQuestions={TOTAL_QUESTIONS} answers={answers} handleOnRestart={handleOnRestart} />
+            <ResultsPage
+              questions={questions}
+              totalQuestions={TOTAL_QUESTIONS}
+              answers={answers}
+              handleOnRestart={handleOnRestart}
+            />
           </Route>
           <Route path="/">
             <HomePage handleOnStart={handleOnStart} loading={loading} />

@@ -2,13 +2,13 @@
 
 exports[`renders correctly 1`] = `
 Array [
-  <h3>
+  <h4>
     You score
      
     0
      / 
     10
-  </h3>,
+  </h4>,
   <div
     className="ResultsPage-questions-section"
   >

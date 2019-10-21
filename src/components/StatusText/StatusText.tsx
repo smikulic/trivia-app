@@ -7,7 +7,7 @@ interface IStatusTextProps {
 }
 
 function StatusText({ statusNotice, firstValue, secondValue }: IStatusTextProps) {
-  return <h3>{statusNotice} {firstValue} / {secondValue}</h3>;
+  return <h4>{statusNotice} {firstValue} / {secondValue}</h4>;
 }
 
 export default StatusText;

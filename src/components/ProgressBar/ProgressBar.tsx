@@ -1,11 +1,11 @@
 import React from 'react';
 import './ProgressBar.css';
 
-interface IPercentageProps {
+interface IProgressBarProps {
   percentage: number,
 }
 
-function ProgressBar({ percentage }: IPercentageProps) {
+function ProgressBar({ percentage }: IProgressBarProps) {
   return <div className="progress-bar" style={{ width: `${percentage}%` }}></div>;
 }
 

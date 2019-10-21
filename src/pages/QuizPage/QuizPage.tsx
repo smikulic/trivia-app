@@ -6,15 +6,26 @@ import ProgressBar from '../../components/ProgressBar';
 import { IQuestion } from '../../types';
 import { decodeHtml } from '../../utils/formatter';
 import './QuizPage.css';
+import Pagination from '../../components/Pagination';
 
 interface IQuizPageProps {
   questionId: string,
   questions: IQuestion[],
   totalQuestions: number,
   handleOnAnswer: (arg1: boolean, arg2: number) => void,
+  handleJumpToQuestion: (arg1: number) => void,
+  answered: boolean,
+  answers: any, // this needs to be boolean[] but there is an issues with TS and initial never[] state.
 }
 
-function QuizPage({ questions, totalQuestions, handleOnAnswer }: IQuizPageProps) {
+function QuizPage({
+  questions,
+  totalQuestions,
+  handleOnAnswer,
+  handleJumpToQuestion,
+  answered,
+  answers,
+}: IQuizPageProps) {
   const { questionId } = useParams();
   const currentQuestion = questionId ? parseInt(questionId, 10) : 0;
   const nextQuestion = currentQuestion + 1;
@@ -27,18 +38,25 @@ function QuizPage({ questions, totalQuestions, handleOnAnswer }: IQuizPageProps)
         <h1>{question.category || 'N/A'}</h1>
         <h3>{decodeHtml(question.question)}</h3>
       </div>
-      <div className="QuizPage-button-answers-section">
-        <ButtonAnswer
-          answerValue="true"
-          handleOnClick={() => handleOnAnswer('True' === question.correct_answer, nextQuestion)}
-        />
-        <ButtonAnswer
-          answerValue="false"
-          handleOnClick={() => handleOnAnswer('False' === question.correct_answer, nextQuestion)}
-        />
-      </div>
+      { !answered && (
+        <div className="QuizPage-button-answers-section">
+          <ButtonAnswer
+            answerValue="true"
+            handleOnClick={() => handleOnAnswer('True' === question.correct_answer, nextQuestion)}
+          />
+          <ButtonAnswer
+            answerValue="false"
+            handleOnClick={() => handleOnAnswer('False' === question.correct_answer, nextQuestion)}
+          />
+        </div>
+      )}
+      <Pagination
+        totalPages={totalQuestions}
+        totalClickable={answers ? answers.length + 1 : 0}
+        handlePageClick={handleJumpToQuestion}
+      />
       <StatusText
-        statusNotice="Question"
+        statusNotice=""
         firstValue={currentQuestion}
         secondValue={totalQuestions}
       />

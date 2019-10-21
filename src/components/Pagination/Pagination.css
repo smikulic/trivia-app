@@ -1,0 +1,18 @@
+.pagination {
+  margin: 1.25rem 0;
+}
+
+.pagination svg {
+  margin-right: 0.75rem;
+  color: rgba(255, 255, 255, .85);
+  cursor: pointer;
+}
+
+.pagination svg:hover {
+  color: white;
+}
+
+.pagination svg.disabled {
+  color: grey;
+  cursor: default;
+}
