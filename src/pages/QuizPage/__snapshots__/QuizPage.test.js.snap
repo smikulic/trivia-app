@@ -3,6 +3,14 @@
 exports[`renders correctly 1`] = `
 Array [
   <div
+    className="progress-bar"
+    style={
+      Object {
+        "width": "10%",
+      }
+    }
+  />,
+  <div
     className="QuizPage-question-section"
   >
     <h1>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from "react-router-dom";
 import ButtonAnswer from '../../components/ButtonAnswer';
 import StatusText from '../../components/StatusText';
+import ProgressBar from '../../components/ProgressBar';
 import { IQuestion } from '../../types';
 import { decodeHtml } from '../../utils/formatter';
 import './QuizPage.css';
@@ -21,6 +22,7 @@ function QuizPage({ questions, totalQuestions, handleOnAnswer }: IQuizPageProps)
 
   return (
     <React.Fragment>
+      <ProgressBar percentage={currentQuestion / totalQuestions * 100} />
       <div className="QuizPage-question-section">
         <h1>{question.category || 'N/A'}</h1>
         <h3>{decodeHtml(question.question)}</h3>
