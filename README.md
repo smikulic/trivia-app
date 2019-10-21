@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### Trivia Game
 
 10 question, true or false, trivia app.
+[Demo](https://smikulic.github.io/trivia-app/)
 
 ### Data API
 
