@@ -2,30 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Description
 
-### Trivia Game Coding Challenge
+### Trivia Game
 
-### Overview
-
-Challenge is to create a 10 question, true or false, trivia app.
-
-### Focus points
-
-- Functionality
-- Code Format
-- Project Structure
-- Scalability
-- Maintainability
-- Use of industry best practices
-
-Some specific things that we are looking for:
-
-- Typescript if you know it
-- Correct implementation of a state manager
-- Correct implementation of a navigation solution
-- Componentization
-- Communiation in the repo and/or code
-- Best practices with API calls and data
-- Separation of concerns between business and UI logic
+10 question, true or false, trivia app.
 
 ### Data API
 
