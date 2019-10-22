@@ -3,7 +3,8 @@
 }
 
 .pagination svg {
-  margin-right: 0.75rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
   color: rgba(255, 255, 255, .85);
   cursor: pointer;
 }

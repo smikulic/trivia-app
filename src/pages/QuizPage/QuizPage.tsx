@@ -38,18 +38,18 @@ function QuizPage({
         <h1>{question.category || 'N/A'}</h1>
         <h3>{decodeHtml(question.question)}</h3>
       </div>
-      { !answered && (
-        <div className="QuizPage-button-answers-section">
-          <ButtonAnswer
-            answerValue="true"
-            handleOnClick={() => handleOnAnswer('True' === question.correct_answer, nextQuestion)}
-          />
-          <ButtonAnswer
-            answerValue="false"
-            handleOnClick={() => handleOnAnswer('False' === question.correct_answer, nextQuestion)}
-          />
-        </div>
-      )}
+      <div className="QuizPage-button-answers-section">
+        <ButtonAnswer
+          answerValue="true"
+          handleOnClick={() => handleOnAnswer('True' === question.correct_answer, nextQuestion)}
+          disabled={answered}
+        />
+        <ButtonAnswer
+          answerValue="false"
+          handleOnClick={() => handleOnAnswer('False' === question.correct_answer, nextQuestion)}
+          disabled={answered}
+        />
+      </div>
       <Pagination
         totalPages={totalQuestions}
         totalClickable={answers ? answers.length + 1 : 0}
@@ -59,6 +59,7 @@ function QuizPage({
         statusNotice=""
         firstValue={currentQuestion}
         secondValue={totalQuestions}
+        small={true}
       />
     </React.Fragment>
   );

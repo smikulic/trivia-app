@@ -3,6 +3,10 @@
   height: 20rem;
 }
 
+.QuizPage-question-section h1 {
+  text-decoration: underline;
+}
+
 .QuizPage-button-answers-section {
   display: flex;
   justify-content: space-evenly;
