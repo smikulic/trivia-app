@@ -23,12 +23,16 @@ function ResultsPage({ questions, totalQuestions, answers, handleOnRestart }: IR
 
   return (
     <React.Fragment>
-      <StatusText
-        statusNotice="You score"
-        firstValue={correctAnswers.length}
-        secondValue={totalQuestions}
-      />
+      <div className="ResultsPage-score-section">
+        <StatusText
+          statusNotice="You score"
+          firstValue={correctAnswers.length}
+          secondValue={totalQuestions}
+        />
+        <h4>{correctAnswers.length / totalQuestions * 100}%</h4>
+      </div>
       <div className="ResultsPage-questions-section">
+        Score details: 
         { questions && questions.map((question, key) => {
           const correctlyAnsweredQuestion = answers[key];
           return (

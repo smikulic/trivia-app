@@ -3,14 +3,18 @@ import './ButtonAnswer.css';
 
 interface IButtonAnswerProps {
   answerValue: string,
+  disabled?: boolean,
   handleOnClick: () => void,
 }
 
-function ButtonAnswer({ answerValue, handleOnClick }: IButtonAnswerProps) {
+function ButtonAnswer({ answerValue, handleOnClick, disabled }: IButtonAnswerProps) {
+  let buttonClassName = `button-answer ${answerValue}`;
+  buttonClassName += disabled ? ' disabled' : '';
+
   return (
     <div
-      className={`button-answer ${answerValue}`}
-      onClick={handleOnClick}
+      className={buttonClassName}
+      onClick={disabled ? undefined : handleOnClick}
     >
       {answerValue}
     </div>
